@@ -24,8 +24,7 @@ public class WebAppInitializer implements WebApplicationInitializer {
 
         ServletRegistration.Dynamic servlet = servletContext.addServlet("dispatcher", new DispatcherServlet(webAppContext));
         servlet.setLoadOnStartup(2);
-        servlet.addMapping("/*");
-        servlet.setInitParameter("useFileMappedBuffer", "false");
+        servlet.addMapping("/");
     }
 
     private AnnotationConfigWebApplicationContext getContext() {
