@@ -45,7 +45,7 @@ public class AuthenticationService implements UserDetailsService {
         if (null != violations && !violations.isEmpty()) {
             StringBuilder sb = new StringBuilder(50);
             for (ConstraintViolation<LoginForm> violation : violations) {
-                sb.append(violation.getMessage()).append('\n');
+                sb.append(violation.getMessage()).append(". ");
             }
 
             throw new InternalAuthenticationServiceException(sb.toString());

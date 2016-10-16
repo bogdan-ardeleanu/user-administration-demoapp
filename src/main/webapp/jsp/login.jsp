@@ -43,7 +43,7 @@
                     <c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION}">
                         <font color="red">
                             <br/><br/>
-                            <c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}"/>.
+                            <c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}"/>
                         </font>
                     </c:if>
 
