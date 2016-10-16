@@ -1,0 +1,20 @@
+{
+  "customer": {
+    "id": 1,
+    "identifier": 12345678,
+    "firstName": "Mihai",
+    "lastName": "Viteazu",
+    "accounts": [
+      {
+        "id": 2,
+        "name": "1234",
+        "balance": 123
+      },
+      {
+        "id": 4,
+        "name": "12345",
+        "balance": 234
+      }
+    ]
+  }
+}

@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -16,6 +18,7 @@ import x.y.z.demo.app.repository.CustomerRepository;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
+import java.util.HashSet;
 import java.util.Locale;
 import java.util.Set;
 
@@ -56,7 +59,10 @@ public class AuthenticationService implements UserDetailsService {
             String msgException = messageSource.getMessage("NotFound.auth.identifier", new Object[]{username}, locale);
             throw new InternalAuthenticationServiceException(msgException);
         }
-        UserDetails userDetails = new User(username, username, null);
+
+        Set<GrantedAuthority> authorities = new HashSet<>();
+
+        UserDetails userDetails = new User(username, username, authorities);
         return userDetails;
     }
 }

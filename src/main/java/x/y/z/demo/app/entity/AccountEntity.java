@@ -1,5 +1,7 @@
 package x.y.z.demo.app.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -21,7 +23,8 @@ public class AccountEntity implements Serializable {
     @Basic(optional = false)
     private Integer balance;
 
-    @ManyToOne
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ID_CUSTOMER")
     private CustomerEntity customer;
 
