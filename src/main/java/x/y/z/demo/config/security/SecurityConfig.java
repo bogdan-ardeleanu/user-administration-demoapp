@@ -48,7 +48,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/login*").anonymous()
                 .anyRequest().authenticated()
-                .and().formLogin().loginPage("/login").loginProcessingUrl("/login").usernameParameter("accountNo").passwordParameter("accountNo")
+                .and().formLogin().loginPage("/login").loginProcessingUrl("/login").usernameParameter("identifier").passwordParameter("identifier")
                 .defaultSuccessUrl("/")
                 .failureUrl("/login?error=true").permitAll()
                 .and().logout().logoutSuccessUrl("/login").permitAll();

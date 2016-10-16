@@ -36,7 +36,7 @@ public class SpringDataRepositoryTest {
     public void testCustomerRepository() throws Exception {
 
         CustomerEntity customer = new CustomerEntity();
-        customer.setAccountNo(random.nextInt());
+        customer.setIdentifier(random.nextInt());
         customer.setFirstName(RandomStringUtils.randomAlphanumeric(20).toUpperCase());
         customer.setLastName(RandomStringUtils.randomAlphanumeric(10).toUpperCase());
         customer = customerRepository.save(customer);

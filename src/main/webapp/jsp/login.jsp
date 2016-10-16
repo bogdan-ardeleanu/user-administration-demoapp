@@ -20,8 +20,8 @@
                 <form:form commandName="loginForm" action="${loginUrl}" method="post">
                     <div class="input-group input-sm">
                         <label class="input-group-addon" for="username"><i class="fa fa-user"></i></label>
-                        <input type="text" class="form-control" id="accountNo" name="accountNo"
-                               placeholder="Enter Username" required>
+                        <input type="text" class="form-control" id="identifier" name="identifier"
+                               placeholder="Enter ID" required>
                     </div>
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 

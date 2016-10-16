@@ -5,7 +5,6 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import org.springframework.test.context.web.AnnotationConfigWebContextLoader;
 import org.springframework.test.context.web.WebAppConfiguration;
 import x.y.z.demo.app.model.LoginForm;
@@ -31,7 +30,7 @@ public class Jsr303ValidationTest {
     @Test
     public void testFormLoginValidation() throws Exception {
         LoginForm loginForm = new LoginForm();
-        loginForm.setAccountNo("a");
+        loginForm.setIdentifier("a");
 
         // validate the input
 //        ValidatorFactory factory = Validation.buildDefaultValidatorFactory();

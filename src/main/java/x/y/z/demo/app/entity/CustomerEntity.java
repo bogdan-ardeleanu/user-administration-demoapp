@@ -13,9 +13,9 @@ public class CustomerEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "ACCOUNT_NO", length = 10, unique = true)
+    @Column(name = "IDENTIFIER", length = 10, unique = true)
     @Basic(optional = false)
-    private Integer accountNo;
+    private Integer identifier;
 
     @Column(name = "FIRST_NAME", length = 50)
     private String firstName;
@@ -31,12 +31,12 @@ public class CustomerEntity implements Serializable {
         this.id = id;
     }
 
-    public Integer getAccountNo() {
-        return accountNo;
+    public Integer getIdentifier() {
+        return identifier;
     }
 
-    public void setAccountNo(Integer accountNo) {
-        this.accountNo = accountNo;
+    public void setIdentifier(Integer identifier) {
+        this.identifier = identifier;
     }
 
     public String getFirstName() {

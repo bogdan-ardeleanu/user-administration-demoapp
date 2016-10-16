@@ -39,7 +39,7 @@ public class AuthenticationService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username)
             throws UsernameNotFoundException {
         LoginForm loginForm = new LoginForm();
-        loginForm.setAccountNo(username);
+        loginForm.setIdentifier(username);
 
         Set<ConstraintViolation<LoginForm>> violations = validator.validate(loginForm);
         if (null != violations && !violations.isEmpty()) {
@@ -50,10 +50,10 @@ public class AuthenticationService implements UserDetailsService {
 
             throw new InternalAuthenticationServiceException(sb.toString());
         }
-        CustomerEntity customer = customerRepository.findByAccountNo(Integer.parseInt(username));
+        CustomerEntity customer = customerRepository.findByIdentifier(Integer.parseInt(username));
         if (null == customer) {
             Locale locale = LocaleContextHolder.getLocale();
-            String msgException = messageSource.getMessage("NotFound.auth.accountNo", new Object[]{username}, locale);
+            String msgException = messageSource.getMessage("NotFound.auth.identifier", new Object[]{username}, locale);
             throw new InternalAuthenticationServiceException(msgException);
         }
         UserDetails userDetails = new User(username, username, null);
