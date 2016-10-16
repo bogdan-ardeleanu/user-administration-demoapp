@@ -1,16 +1,16 @@
-var app = angular.module('app', ['ngRoute','ngResource']);
-app.config(function($routeProvider){
+var app = angular.module('app', [
+    'ngRoute',
+    'ngResource'
+]);
+/*app.config(function ($routeProvider) {
     $routeProvider
-        .when('/users',{
-            templateUrl: '/static/views/users.html',
-            controller: 'usersController'
+        .when('/', {
+            templateUrl: '/index.html',
+            controller: 'CustomerController'
         })
-        .when('/roles',{
-            templateUrl: '/static/views/roles.html',
-            controller: 'rolesController'
-        })
+
         .otherwise(
-            { redirectTo: '/'}
+            {redirectTo: '/'}
         );
-});
+});*/
 

@@ -1,7 +1,19 @@
-app.controller('usersController', function($scope) {
-    $scope.headingTitle = "User List";
-});
+app.controller('CustomerController', function ($scope, $resource, $http, CustomerService) {
+    $scope.headingTitle = "Customer Details";
 
-app.controller('rolesController', function($scope) {
-    $scope.headingTitle = "Roles List";
+    $scope.customer = null;
+
+    loadCustomerDetails();
+
+    // I apply the remote data to the local scope.
+    function applyCustomerDetails(customer) {
+        $scope.customer = customer;
+    }
+
+    // I load the remote data from the server.
+    function loadCustomerDetails() {
+        CustomerService.getDetails().then(function (data) {
+            applyCustomerDetails(data.customer);
+        });
+    }
 });
