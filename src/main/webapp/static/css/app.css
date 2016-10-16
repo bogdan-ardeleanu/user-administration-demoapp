@@ -51,13 +51,13 @@ body {
     margin-bottom: 0 !important;
 }
 
-.formcontainer{
+.formcontainer {
     background-color: #DAE8E8;
     padding: 20px;
 }
 
 .generic-container {
-    width:80%;
+    width: 80%;
     margin-left: 20px;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -66,8 +66,4 @@ body {
     border: 1px solid #ddd;
     border-radius: 4px;
     box-shadow: 0 0 30px black;
-}
-
-.custom-width {
-    width: 80px !important;
 }

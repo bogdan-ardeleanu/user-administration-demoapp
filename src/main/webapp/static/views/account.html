@@ -11,7 +11,7 @@
         </tr>
         <tr>
             <td><b>Balance</b></td>
-            <td><span ng-bind="currentAccount.balance"></span></td>
+            <td><span ng-bind="currentAccount.balance | number | comma2dot"></span></td>
         </tr>
     </table>
 

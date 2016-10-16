@@ -15,5 +15,9 @@ app.config(function ($routeProvider) {
         .otherwise(
             {redirectTo: '/'}
         );
+}).filter('comma2dot', function () {
+    return function (input) {
+        return input.replace(/,/g, '.');
+    };
 });
 
