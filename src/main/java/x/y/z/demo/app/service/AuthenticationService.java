@@ -1,6 +1,9 @@
 package x.y.z.demo.app.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,9 +15,8 @@ import x.y.z.demo.app.model.LoginForm;
 import x.y.z.demo.app.repository.CustomerRepository;
 
 import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
 import javax.validation.Validator;
-import javax.validation.ValidatorFactory;
+import java.util.Locale;
 import java.util.Set;
 
 /**
@@ -25,14 +27,20 @@ public class AuthenticationService implements UserDetailsService {
     @Autowired
     private CustomerRepository customerRepository;
 
+    @Autowired
+    @Qualifier(value = "messageSource")
+    private MessageSource messageSource;
+
+    @Autowired
+    @Qualifier(value = "validator")
+    private Validator validator;
+
     @Override
     public UserDetails loadUserByUsername(String username)
             throws UsernameNotFoundException {
         LoginForm loginForm = new LoginForm();
         loginForm.setAccountNo(username);
 
-        ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-        Validator validator = factory.getValidator();
         Set<ConstraintViolation<LoginForm>> violations = validator.validate(loginForm);
         if (null != violations && !violations.isEmpty()) {
             StringBuilder sb = new StringBuilder(50);
@@ -42,7 +50,12 @@ public class AuthenticationService implements UserDetailsService {
 
             throw new InternalAuthenticationServiceException(sb.toString());
         }
-        CustomerEntity customer = customerRepository.findByAccountNo(username);
+        CustomerEntity customer = customerRepository.findByAccountNo(Integer.parseInt(username));
+        if (null == customer) {
+            Locale locale = LocaleContextHolder.getLocale();
+            String msgException = messageSource.getMessage("NotFound.auth.accountNo", new Object[]{username}, locale);
+            throw new InternalAuthenticationServiceException(msgException);
+        }
         UserDetails userDetails = new User(username, username, null);
         return userDetails;
     }

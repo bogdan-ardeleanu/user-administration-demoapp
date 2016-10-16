@@ -12,8 +12,8 @@ import javax.validation.constraints.Size;
 public class LoginForm {
     @Size(min = 4, max = 10, message = "{Size.LoginForm.accountNo}")
     @Pattern(regexp = "^(0|[1-9][0-9]*)$", message = "{Pattern.LoginForm.accountNo}")
-    @NotNull(message = "{NotNull.LoginForm.accountNo}")
-    @NotEmpty(message = "{NotEmpty.LoginForm.accountNo}")
+//    @NotNull(message = "{NotNull.LoginForm.accountNo}")
+//    @NotEmpty(message = "{NotEmpty.LoginForm.accountNo}")
     private String accountNo;
 
     public String getAccountNo() {

@@ -3,15 +3,13 @@ package x.y.z.demo.config.web;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.context.support.ResourceBundleMessageSource;
-import org.springframework.core.Ordered;
-import org.springframework.validation.Validator;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
+import javax.validation.Validator;
 
 
 @Configuration
@@ -43,18 +41,19 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     }
 
 
-
+    @Bean
     public MessageSource messageSource() {
         ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
-        messageSource.setBasename("messages");
+        messageSource.setBasename("messages.messages");
+        messageSource.setFallbackToSystemLocale(false);
         return messageSource;
     }
 
-    @Override
-    public Validator getValidator() {
-        LocalValidatorFactoryBean validator = new LocalValidatorFactoryBean();
-        validator.setValidationMessageSource(messageSource());
-        return validator;
+    @Bean(name = "validator")
+    public Validator getJsrValidator() {
+        LocalValidatorFactoryBean validatorFactoryBean = new LocalValidatorFactoryBean();
+        validatorFactoryBean.setValidationMessageSource(messageSource());
+        return validatorFactoryBean;
     }
 
     @Override
