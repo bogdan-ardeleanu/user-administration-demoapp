@@ -1,16 +1,19 @@
 var app = angular.module('app', [
     'ngRoute',
-    'ngResource'
+    'ngResource',
+    'ngSanitize'
 ]);
-/*app.config(function ($routeProvider) {
+app.config(function ($routeProvider) {
     $routeProvider
         .when('/', {
-            templateUrl: '/index.html',
-            controller: 'CustomerController'
+            templateUrl: '/static/views/accounts.html'
         })
-
+        .when('/account/:id', {
+            templateUrl: '/static/views/account.html',
+            controller: 'AccountController'
+        })
         .otherwise(
             {redirectTo: '/'}
         );
-});*/
+});
 

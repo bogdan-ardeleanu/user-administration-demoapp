@@ -1,14 +1,20 @@
 app.factory("CustomerService", function ($http, $q) {
     // Return public API.
     return ({
-        getDetails: getDetails
+        getDetails: getDetails,
+        getAccount: getAccount
     });
     // ---
     // PUBLIC METHODS.
     // ---
     // I add a friend with the given name to the remote collection.
-    function getDetails(name) {
+    function getDetails() {
         var request = $http({method: 'get', url: '/customer/details'});
+        return ( request.then(handleSuccess, handleError) );
+    }
+
+    function getAccount(id) {
+        var request = $http({method: 'get', url: '/customer/account/'+ id});
         return ( request.then(handleSuccess, handleError) );
     }
 

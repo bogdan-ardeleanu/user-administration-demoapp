@@ -5,16 +5,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import x.y.z.demo.app.entity.AccountEntity;
 import x.y.z.demo.app.entity.CustomerEntity;
 import x.y.z.demo.app.service.CustomerService;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -39,6 +35,14 @@ public class CustomerController {
         result.put("customer", customer);
 
         return result;
+    }
+
+    @RequestMapping(value = "/account/{id}", method = RequestMethod.GET, produces = "application/json")
+    @ResponseBody
+    public AccountEntity getAccount(@PathVariable("id") Long idAccount) {
+        String principal = getPrincipal();
+        AccountEntity account = customerService.getAccount(idAccount, Integer.parseInt(principal));
+        return account;
     }
 
     private String getPrincipal() {

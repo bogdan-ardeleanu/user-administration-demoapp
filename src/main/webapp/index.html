@@ -9,25 +9,25 @@
     <script src="/webjars/angularjs/1.4.9/angular.js"></script>
     <script src="/webjars/angularjs/1.4.9/angular-resource.js"></script>
     <script src="/webjars/angularjs/1.4.9/angular-route.js"></script>
+    <script src="/webjars/angularjs/1.4.9/angular-sanitize.js"></script>
     <script src="/static/js/app.js"></script>
     <script src="/static/js/controller.js"></script>
     <script src="/static/js/service.js"></script>
 </head>
 <body ng-controller="CustomerController">
-<h4>User Administration Demo App INDEX</h4>
 
-Customer: {{customer.identifier}}, {{customer.firstName}} {{customer.lastName}}
-<!-- Show existing friends. -->
-<ul ng-show="!!customer">
-    <li ng-repeat="account in customer.accounts">
+<i ng-bind-html="pageDescription"></i>
 
-        Balance: {{ account.balance }}
+<form id="logoutForm" method="get" action="/logout"></form>
+<div class="container" ng-show="!!customer">
+    <h2>User Account Demo Application</h2>
 
-        ( <a ng-click="removeFriend( account )">delete</a> )
+    <h4>Welcome {{customer.firstName}} {{customer.lastName}} (ID: {{customer.identifier}}) | <a
+            onclick="document.forms['logoutForm'].submit()">Logout</a></h4>
 
-    </li>
-</ul>
+    <div ng-view></div>
 
 
+</div>
 </body>
 </html>

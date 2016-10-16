@@ -8,9 +8,7 @@ import x.y.z.demo.app.entity.CustomerEntity;
 import x.y.z.demo.app.repository.AccountRepository;
 import x.y.z.demo.app.repository.CustomerRepository;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by Anastasia cea micuta on 10/16/2016.
@@ -26,8 +24,13 @@ public class CustomerService {
 
     public CustomerEntity getDetails(Integer customerIdentifier) {
         CustomerEntity customer = customerRepository.findByIdentifier(customerIdentifier);
-        List<AccountEntity> accounts = accountRepository.findByCustomer_IdOrderByNameAsc(customer.getId());
+        List<AccountEntity> accounts = accountRepository.findByCustomer_IdOrderByAccountNoAsc(customer.getId());
         customer.setAccounts(accounts);
         return customer;
+    }
+
+    public AccountEntity getAccount(Long idAccount, Integer customerIdentifier) {
+        AccountEntity account = accountRepository.getAccount(idAccount, customerIdentifier);
+        return account;
     }
 }

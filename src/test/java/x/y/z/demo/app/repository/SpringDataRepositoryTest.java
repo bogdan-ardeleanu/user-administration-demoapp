@@ -58,7 +58,7 @@ public class SpringDataRepositoryTest {
 
     @Test
     public void testAccountRepository() throws Exception {
-        List<AccountEntity> accounts = accountRepository.findByCustomer_IdOrderByNameAsc(1l);
+        List<AccountEntity> accounts = accountRepository.findByCustomer_IdOrderByAccountNoAsc(1l);
         logger.debug("accounts no = "+ accounts.size());
     }
 }

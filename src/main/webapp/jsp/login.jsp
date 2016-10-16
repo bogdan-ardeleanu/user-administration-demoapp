@@ -12,46 +12,39 @@
 </head>
 
 <body>
-<div id="mainWrapper">
-    <div class="login-container">
-        <div class="login-card">
-            <div class="login-form">
-                <c:url value="/login" var="loginUrl"/>
-                <form:form commandName="loginForm" action="${loginUrl}" method="post">
-                    <div class="input-group input-sm">
-                        <label class="input-group-addon" for="username"><i class="fa fa-user"></i></label>
-                        <input type="text" class="form-control" id="identifier" name="identifier"
-                               placeholder="Enter ID" required>
-                    </div>
-                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+<i>
+    <p><b>Pagina 1. Selectie ID client</b></p>
+    <p>In prima pagina userul poate introduce un ID de client si un buton de submit. Cand se da click
+        pe submit utilizatorului i se afiseaza a doua pagina.
+    </p>
+</i>
+<div class="container">
+    <c:url value="/login" var="loginUrl"/>
+    <form:form commandName="loginForm" action="${loginUrl}" method="post" class="form-signin">
+        <input type="text" class="form-control" id="identifier" name="identifier" placeholder="Enter ID" required>
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
-                    <div class="form-actions">
-                        <input type="submit"
-                               class="btn btn-block btn-primary btn-default" value="Log in">
-                    </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>
 
-                    <%--<c:if test="${param.error != null}">--%>
-                        <%--<div class="alert alert-danger">--%>
-                            <%--<p>Invalid AccountNo</p>--%>
-                        <%--</div>--%>
-                    <%--</c:if>--%>
-                    <c:if test="${param.logout != null}">
-                        <div class="alert alert-success">
-                            <p>You have been logged out successfully.</p>
-                        </div>
-                    </c:if>
-                    <c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION}">
-                        <font color="red">
-                            <br/><br/>
-                            <c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}"/>
-                        </font>
-                    </c:if>
-
-                    <form:errors path="*" cssClass="error"></form:errors>
-                </form:form>
+        <%--<c:if test="${param.error != null}">--%>
+        <%--<div class="alert alert-danger">--%>
+        <%--<p>Invalid AccountNo</p>--%>
+        <%--</div>--%>
+        <%--</c:if>--%>
+        <c:if test="${param.logout != null}">
+            <div class="alert alert-success">
+                <p>You have been logged out successfully.</p>
             </div>
-        </div>
-    </div>
+        </c:if>
+        <c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION}">
+            <font color="red">
+                <br/><br/>
+                <c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}"/>
+            </font>
+        </c:if>
+
+        <form:errors path="*" cssClass="error"></form:errors>
+    </form:form>
 </div>
 
 </body>

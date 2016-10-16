@@ -15,9 +15,9 @@ public class AccountEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "IDENTIFIER", length = 10, unique = true)
+    @Column(name = "ACCOUNT_NO", length = 10, unique = true)
     @Basic(optional = false)
-    private String name;
+    private Integer accountNo;
 
     @Column(name = "BALANCE")
     @Basic(optional = false)
@@ -36,12 +36,12 @@ public class AccountEntity implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public Integer getAccountNo() {
+        return accountNo;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setAccountNo(Integer accountNo) {
+        this.accountNo = accountNo;
     }
 
     public Integer getBalance() {

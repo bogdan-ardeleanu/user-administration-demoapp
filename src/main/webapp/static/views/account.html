@@ -1,0 +1,44 @@
+<div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading">
+        <span class="lead">Account</span>
+        <a type="button" href="#/" class="close">Back</a>
+    </div>
+    <table class="table table-hover">
+        <tr>
+            <td><b>Account No.</b></td>
+            <td><span ng-bind="currentAccount.accountNo"></span></td>
+        </tr>
+        <tr>
+            <td><b>Balance</b></td>
+            <td><span ng-bind="currentAccount.balance"></span></td>
+        </tr>
+    </table>
+
+    <div class="panel-heading"><span class="lead">Actions</span></div>
+    <div class="formcontainer">
+        <form ng-submit="ctrl.submit()" name="myForm" class="form-horizontal">
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <label class="col-md-2 control-lable" for="amount">Amount</label>
+                    <div class="col-md-7">
+                        <input type="number" name="amount" id="amount" ng-model="amount" class="form-control input-sm"
+                               placeholder="Enter amount" required ng-minlength="1"/>
+                        <div class="has-error" ng-show="myForm.$dirty">
+                            <span ng-show="myForm.amount.$error.required">This is a required field</span>
+                            <span ng-show="myForm.amount.$error.minlength">Minimum length required is 1</span>
+                            <span ng-show="myForm.amount.$invalid">This field is invalid </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-actions text-left">
+                    <a type="button" class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid">Withdrawal</a>
+                    <a type="button" class="btn btn-warning btn-sm" ng-disabled="myForm.$invalid">Deposit</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
