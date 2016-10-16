@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import x.y.z.demo.app.service.AuthenticationService;
 
 import javax.sql.DataSource;
 
@@ -24,9 +25,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private DataSource dataSource;
 
+    @Autowired
+    private AuthenticationService authenticationService;
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.jdbcAuthentication().dataSource(dataSource).usersByUsernameQuery("select 'admin' username from dual");
+//        auth.jdbcAuthentication().dataSource(dataSource)
+//                .usersByUsernameQuery("select ACCOUNT_NO username, ACCOUNT_NO password, 1 enable from CUSTOMER where ACCOUNT_NO = ?");
+        auth.userDetailsService(authenticationService);
     }
 
     @Bean
@@ -42,10 +48,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/login*").anonymous()
                 .anyRequest().authenticated()
-                .and().formLogin().loginPage("/login").usernameParameter("username").passwordParameter("password")
+                .and().formLogin().loginPage("/login").loginProcessingUrl("/login").usernameParameter("accountNo").passwordParameter("accountNo")
                 .defaultSuccessUrl("/")
-                .failureUrl("/login?error=true")
-                .and().logout().logoutSuccessUrl("/login");
+                .failureUrl("/login?error=true").permitAll()
+                .and().logout().logoutSuccessUrl("/login").permitAll();
     }
 
     @Override
@@ -53,7 +59,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         web.ignoring()
                 .antMatchers("/webjars/**")
-                .antMatchers("/static/**")
-                .antMatchers("/jsp/login.jsp");
+                .antMatchers("/static/**");
     }
 }

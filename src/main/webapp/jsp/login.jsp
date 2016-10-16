@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page isELIgnored="false" %>
 <html>
 <head>
@@ -15,10 +16,11 @@
     <div class="login-container">
         <div class="login-card">
             <div class="login-form">
-                <form action="<c:url var="loginUrl" value="/login"/>" method="post" class="form-horizontal">
+                <c:url value="/login" var="loginUrl"/>
+                <form:form commandName="loginForm" action="${loginUrl}" method="post">
                     <c:if test="${param.error != null}">
                         <div class="alert alert-danger">
-                            <p>Invalid username and password.</p>
+                            <p>Invalid AccountNo</p>
                         </div>
                     </c:if>
                     <c:if test="${param.logout != null}">
@@ -26,15 +28,19 @@
                             <p>You have been logged out successfully.</p>
                         </div>
                     </c:if>
+                    <c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION}">
+                        <font color="red">
+                            Your login attempt was not successful due to <br/><br/>
+                            <c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}"/>.
+                        </font>
+                    </c:if>
+
+                    <form:errors path="*" cssClass="error"></form:errors>
+
                     <div class="input-group input-sm">
                         <label class="input-group-addon" for="username"><i class="fa fa-user"></i></label>
-                        <input type="text" class="form-control" id="username" name="ssoId" placeholder="Enter Username"
-                               required>
-                    </div>
-                    <div class="input-group input-sm">
-                        <label class="input-group-addon" for="password"><i class="fa fa-lock"></i></label>
-                        <input type="password" class="form-control" id="password" name="password"
-                               placeholder="Enter Password" required>
+                        <input type="text" class="form-control" id="accountNo" name="accountNo"
+                               placeholder="Enter Username" required>
                     </div>
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
@@ -42,7 +48,7 @@
                         <input type="submit"
                                class="btn btn-block btn-primary btn-default" value="Log in">
                     </div>
-                </form>
+                </form:form>
             </div>
         </div>
     </div>

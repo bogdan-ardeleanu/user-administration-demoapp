@@ -12,8 +12,8 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/login").setViewName("login");
-        registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
+//        registry.addViewController("/login").setViewName("login");
+//        registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
     }
 
     @Override
@@ -22,6 +22,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         viewResolver.setViewClass(JstlView.class);
         viewResolver.setPrefix("/jsp/");
         viewResolver.setSuffix(".jsp");
+        viewResolver.setOrder(1);
         viewResolver.setViewClass(org.springframework.web.servlet.view.JstlView.class);
         registry.viewResolver(viewResolver);
 
