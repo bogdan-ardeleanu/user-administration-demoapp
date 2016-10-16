@@ -2,6 +2,7 @@ package x.y.z.demo.app.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by Anastasia cea micuta on 10/15/2016.
@@ -22,6 +23,9 @@ public class CustomerEntity implements Serializable {
 
     @Column(name = "LAST_NAME", length = 50)
     private String lastName;
+
+    @OneToMany(mappedBy = "customer")
+    private List<AccountEntity> accounts;
 
     public Long getId() {
         return id;
@@ -53,5 +57,13 @@ public class CustomerEntity implements Serializable {
 
     public void setLastName(String lasttName) {
         this.lastName = lasttName;
+    }
+
+    public List<AccountEntity> getAccounts() {
+        return accounts;
+    }
+
+    public void setAccounts(List<AccountEntity> accounts) {
+        this.accounts = accounts;
     }
 }
