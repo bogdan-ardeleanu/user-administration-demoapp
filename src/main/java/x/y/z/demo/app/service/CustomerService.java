@@ -42,7 +42,7 @@ public class CustomerService {
     }
 
     public void deposit(Long idAccount, Integer customerIdentifier, Integer amount) {
-        if (amount < 0) {
+        if (amount < 1) {
             String msg = messageSource.getMessage("Pozitive.amount", null, LocaleContextHolder.getLocale());
             throw new IllegalArgumentException(msg);
         }
@@ -53,7 +53,7 @@ public class CustomerService {
     }
 
     public void withdrawal(Long idAccount, Integer customerIdentifier, Integer amount) {
-        if (amount < 0) {
+        if (amount < 1) {
             String msg = messageSource.getMessage("Pozitive.amount", null, LocaleContextHolder.getLocale());
             throw new IllegalArgumentException(msg);
         }

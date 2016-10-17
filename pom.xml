@@ -118,6 +118,12 @@
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>4.3.6.Final</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>jaxen</artifactId>
+                    <groupId>jaxen</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
@@ -273,8 +279,10 @@
         <profile>
             <id>jetty9</id>
             <properties>
-                <jetty.version>9.2.11.v20150529</jetty.version>
+                <!--<jetty.version>9.2.11.v20150529</jetty.version>-->
+                <jetty.version>9.2.19.v20160908</jetty.version>
             </properties>
+
 
             <build>
                 <plugins>
@@ -296,6 +304,21 @@
                                 <!--<webInfIncludeJarPattern>.*/spring-[^/]*\.jar$|.*/.*jsp-api-[^/]\.jar$|./.*jsp-[^/]\.jar$|./.*taglibs[^/]*\.jar$</webInfIncludeJarPattern>-->
                             </webApp>
                         </configuration>
+                        <dependencies>
+                            <!-- https://mvnrepository.com/artifact/jaxen/jaxen -->
+                            <dependency>
+                                <groupId>jaxen</groupId>
+                                <artifactId>jaxen</artifactId>
+                                <version>1.1.6</version>
+                                <exclusions>
+                                    <exclusion>
+                                        <groupId>com.ibm.icu</groupId>
+                                        <artifactId>icu4j</artifactId>
+                                    </exclusion>
+                                </exclusions>
+                            </dependency>
+
+                        </dependencies>
                     </plugin>
                 </plugins>
             </build>
