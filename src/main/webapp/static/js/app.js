@@ -6,10 +6,10 @@ var app = angular.module('app', [
 app.config(function ($routeProvider) {
     $routeProvider
         .when('/', {
-            templateUrl: '/static/views/accounts.html'
+            templateUrl: 'static/views/accounts.html'
         })
         .when('/account/:id', {
-            templateUrl: '/static/views/account.html',
+            templateUrl: 'static/views/account.html',
             controller: 'AccountController'
         })
         .otherwise(

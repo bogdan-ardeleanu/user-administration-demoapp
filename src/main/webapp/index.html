@@ -2,23 +2,23 @@
 <html ng-app="app">
 <head>
     <title>User Administration Demo App</title>
-    <link rel="stylesheet" href="/static/css/app.css">
-    <link rel="stylesheet" href="/webjars/bootstrap/3.3.6/css/bootstrap.css">
+    <link rel="stylesheet" href="static/css/app.css">
+    <link rel="stylesheet" href="webjars/bootstrap/3.3.6/css/bootstrap.css">
 
 
-    <script src="/webjars/angularjs/1.4.9/angular.js"></script>
-    <script src="/webjars/angularjs/1.4.9/angular-resource.js"></script>
-    <script src="/webjars/angularjs/1.4.9/angular-route.js"></script>
-    <script src="/webjars/angularjs/1.4.9/angular-sanitize.js"></script>
-    <script src="/static/js/app.js"></script>
-    <script src="/static/js/controller.js"></script>
-    <script src="/static/js/service.js"></script>
+    <script src="webjars/angularjs/1.4.9/angular.js"></script>
+    <script src="webjars/angularjs/1.4.9/angular-resource.js"></script>
+    <script src="webjars/angularjs/1.4.9/angular-route.js"></script>
+    <script src="webjars/angularjs/1.4.9/angular-sanitize.js"></script>
+    <script src="static/js/app.js"></script>
+    <script src="static/js/controller.js"></script>
+    <script src="static/js/service.js"></script>
 </head>
 <body ng-controller="CustomerController">
 
 <i ng-bind-html="pageDescription"></i>
 
-<form id="logoutForm" method="post" action="/logout"></form>
+<form id="logoutForm" method="post" action="logout"></form>
 <div class="container" ng-show="!!customer">
     <h2>User Account Demo Application</h2>
 

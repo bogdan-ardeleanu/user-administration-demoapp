@@ -11,19 +11,19 @@ app.factory("CustomerService", function ($http, $q) {
     // ---
     // I add a friend with the given name to the remote collection.
     function getDetails() {
-        var request = $http({method: 'get', url: '/customer/details'});
+        var request = $http({method: 'get', url: 'customer/details'});
         return ( request.then(handleSuccess, handleError) );
     }
 
     function getAccount(id) {
-        var request = $http({method: 'get', url: '/customer/account/' + id});
+        var request = $http({method: 'get', url: 'customer/account/' + id});
         return ( request.then(handleSuccess, handleError) );
     }
 
     function withdrawal(id, ammount) {
         var request = $http({
             method: 'post',
-            url: '/customer/account/' + id + '/withdrawal',
+            url: 'customer/account/' + id + '/withdrawal',
             params: {amount: ammount}
         });
         return ( request.then(handleSuccess, handleError) );
@@ -32,7 +32,7 @@ app.factory("CustomerService", function ($http, $q) {
     function deposit(id, ammount) {
         var request = $http({
             method: 'post',
-            url: '/customer/account/' + id + '/deposit',
+            url: 'customer/account/' + id + '/deposit',
             params: {amount: ammount}
         });
         return ( request.then(handleSuccess, handleError) );

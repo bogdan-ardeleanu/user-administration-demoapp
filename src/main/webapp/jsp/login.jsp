@@ -6,9 +6,9 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <title>Login page</title>
-    <link rel="stylesheet" href="/static/css/app.css">
-    <link rel="stylesheet" href="/webjars/bootstrap/3.3.6/css/bootstrap.css">
-    <link rel="stylesheet" href="/webjars/font-awesome/4.6.3/css/font-awesome.css"/>
+    <link rel="stylesheet" href="static/css/app.css">
+    <link rel="stylesheet" href="webjars/bootstrap/3.3.6/css/bootstrap.css">
+    <link rel="stylesheet" href="webjars/font-awesome/4.6.3/css/font-awesome.css"/>
 </head>
 
 <body>
