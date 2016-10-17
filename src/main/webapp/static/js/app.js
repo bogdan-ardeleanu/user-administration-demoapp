@@ -17,7 +17,7 @@ app.config(function ($routeProvider) {
         );
 }).filter('comma2dot', function () {
     return function (input) {
-        return input.replace(/,/g, '.');
+        return input ? input.replace(/,/g, '.') : input;
     };
 });
 

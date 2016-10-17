@@ -45,6 +45,46 @@ public class CustomerController {
         return account;
     }
 
+    @RequestMapping(value = "/account/{id}/withdrawal", method = RequestMethod.POST, produces = "application/json")
+    @ResponseBody
+    public Map<String, Object> withdrawal(@PathVariable("id") Long idAccount, @RequestParam Integer amount) {
+        Map<String, Object> result = new HashMap<>();
+        try {
+            String principal = getPrincipal();
+            customerService.withdrawal(idAccount, Integer.parseInt(principal), amount);
+
+            result.put("success", true);
+        } catch (Throwable t) {
+            logger.error("deposit error", t);
+
+            result.put("success", false);
+            result.put("msg", t.getMessage());
+        }
+
+
+        return result;
+    }
+
+    @RequestMapping(value = "/account/{id}/deposit", method = RequestMethod.POST, produces = "application/json")
+    @ResponseBody
+    public Map<String, Object> deposit(@PathVariable("id") Long idAccount, @RequestParam Integer amount) {
+        Map<String, Object> result = new HashMap<>();
+        try {
+            String principal = getPrincipal();
+            customerService.deposit(idAccount, Integer.parseInt(principal), amount);
+
+            result.put("success", true);
+        } catch (Throwable t) {
+            logger.error("deposit error", t);
+
+            result.put("success", false);
+            result.put("msg", t.getMessage());
+        }
+
+
+        return result;
+    }
+
     private String getPrincipal() {
         String userName = null;
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();

@@ -17,7 +17,7 @@
 
     <div class="panel-heading"><span class="lead">Actions</span></div>
     <div class="formcontainer">
-        <form ng-submit="ctrl.submit()" name="myForm" class="form-horizontal">
+        <form name="myForm" class="form-horizontal">
             <div class="row">
                 <div class="form-group col-md-12">
                     <label class="col-md-2 control-lable" for="amount">Amount</label>
@@ -35,8 +35,19 @@
 
             <div class="row">
                 <div class="form-actions text-left">
-                    <a type="button" class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid">Withdrawal</a>
-                    <a type="button" class="btn btn-warning btn-sm" ng-disabled="myForm.$invalid">Deposit</a>
+                    <a href type="button" class="btn btn-primary btn-sm"
+                       ng-disabled="myForm.$invalid" ng-click="withdrawal(currentAccount.id, amount)">Withdrawal</a>
+                    <a href type="button" class="btn btn-warning btn-sm"
+                       ng-disabled="myForm.$invalid" ng-click="deposit(currentAccount.id, amount)">Deposit</a>
+                </div>
+            </div>
+
+            <div class="row" ng-show="operationResponse">
+                <div ng-if="!operationResponse.success" class="alert alert-danger">
+                    <strong>Alerta!</strong> {{operationResponse.msg}}
+                </div>
+                <div ng-if="operationResponse.success" class="alert alert-success">
+                    <strong>Operatia a fost efectuata cu succes!</strong>
                 </div>
             </div>
         </form>

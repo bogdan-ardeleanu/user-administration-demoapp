@@ -2,7 +2,9 @@ app.factory("CustomerService", function ($http, $q) {
     // Return public API.
     return ({
         getDetails: getDetails,
-        getAccount: getAccount
+        getAccount: getAccount,
+        withdrawal: withdrawal,
+        deposit: deposit
     });
     // ---
     // PUBLIC METHODS.
@@ -14,7 +16,25 @@ app.factory("CustomerService", function ($http, $q) {
     }
 
     function getAccount(id) {
-        var request = $http({method: 'get', url: '/customer/account/'+ id});
+        var request = $http({method: 'get', url: '/customer/account/' + id});
+        return ( request.then(handleSuccess, handleError) );
+    }
+
+    function withdrawal(id, ammount) {
+        var request = $http({
+            method: 'post',
+            url: '/customer/account/' + id + '/withdrawal',
+            params: {amount: ammount}
+        });
+        return ( request.then(handleSuccess, handleError) );
+    }
+
+    function deposit(id, ammount) {
+        var request = $http({
+            method: 'post',
+            url: '/customer/account/' + id + '/deposit',
+            params: {amount: ammount}
+        });
         return ( request.then(handleSuccess, handleError) );
     }
 

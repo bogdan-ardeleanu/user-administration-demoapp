@@ -22,7 +22,7 @@
     <c:url value="/login" var="loginUrl"/>
     <form:form commandName="loginForm" action="${loginUrl}" method="post" class="form-signin">
         <input type="text" class="form-control" id="identifier" name="identifier" placeholder="Enter ID" required>
-        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        <%--<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>--%>
 
         <button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>
 
