@@ -35,12 +35,12 @@ b. Daca se alege Retragere si suma introdusa este mai mare decat soldul contului
 
 #Requirements
 
-JDK 1.7+
-Maven 3+
+-JDK 1.7+
+-Maven 3+
 
 #Tehnology stack
-Spring4 (mvc, security, orm)
-JPA (hibernate4)
-Database (H2, filesystem)
-JSP, JSTL
-AngularJS 1.4
+-Spring4 (mvc, security, orm)
+-JPA (hibernate4)
+-Database (H2, filesystem)
+-JSP, JSTL
+-AngularJS 1.4
