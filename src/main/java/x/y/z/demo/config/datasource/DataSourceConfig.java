@@ -14,7 +14,6 @@ import javax.sql.DataSource;
 
 
 @Configuration
-@PropertySource("classpath:h2.properties")
 public class DataSourceConfig {
 
     @Bean
