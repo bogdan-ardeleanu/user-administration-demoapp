@@ -48,8 +48,8 @@ b. Daca se alege Retragere si suma introdusa este mai mare decat soldul contului
 
 Clone the codes.
 
-git clone https://github.com/bogdan-ardeleanu/user-administration-demoapp.git
+	git clone https://github.com/bogdan-ardeleanu/user-administration-demoapp.git
 And enter the root folder, run mvn jetty:run -Pjetty9 to start up an embedded jetty9 to serve this application.
 
-mvn jetty:run -Pjetty9
+	mvn jetty:run -Pjetty9
 Go to http://localhost:8080/ to test it.
