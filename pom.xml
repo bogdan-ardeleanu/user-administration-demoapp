@@ -261,24 +261,6 @@
 
     <profiles>
         <profile>
-            <id>tomcat7</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.tomcat.maven</groupId>
-                        <artifactId>tomcat7-maven-plugin</artifactId>
-                        <version>2.2</version>
-                        <configuration>
-                            <url>http://localhost:8080/manager</url>
-                            <server>localhost</server>
-                            <path>/</path>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-
-        </profile>
-        <profile>
             <id>jetty9</id>
             <properties>
                 <!--<jetty.version>9.2.11.v20150529</jetty.version>-->
